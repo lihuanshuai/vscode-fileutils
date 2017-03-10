@@ -23,10 +23,7 @@ import {
 chai.use(sinonChai);
 
 const rootDir = path.resolve(__dirname, '..', '..', '..');
-const tmpDir = path.resolve(
-    Uri.file(os.tmpdir()).fsPath,
-    'vscode-fileutils-test--duplicate-file'
-);
+const tmpDir = path.join(os.tmpdir(), 'vscode-fileutils-test--duplicate-file');
 
 const fixtureFile1 = path.resolve(rootDir, 'test', 'fixtures', 'file-1.rb');
 const fixtureFile2 = path.resolve(rootDir, 'test', 'fixtures', 'file-2.rb');
