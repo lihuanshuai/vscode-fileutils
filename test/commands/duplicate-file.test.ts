@@ -128,7 +128,7 @@ describe('duplicateFile', () => {
 
                 return duplicateFile().then(() => {
                     const activeEditor: TextEditor = window.activeTextEditor;
-                    expect(activeEditor.document.fileName).to.equal(targetFile);
+                    expect(activeEditor.document.fileName.toLowerCase()).to.equal(targetFile.toLowerCase());
                 });
             });
 
