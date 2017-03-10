@@ -87,7 +87,7 @@ describe('duplicateFile', () => {
 
                 return duplicateFile().then(() => {
                     const prompt = 'Duplicate As';
-                    const value = sinon.match(new RegExp(`^${editorFile1}$`, 'i'));
+                    const value = sinon.match((file) => editorFile1.toLowerCase() === file.toLowerCase());
                     expect(window.showInputBox).to.have.been.calledWithMatch({ prompt, value });
                 });
 
