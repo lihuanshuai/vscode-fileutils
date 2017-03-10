@@ -23,7 +23,7 @@ import {
 chai.use(sinonChai);
 
 const rootDir = path.resolve(__dirname, '..', '..', '..');
-const tmpDir = path.join(os.tmpdir(), 'vscode-fileutils-test--duplicate-file');
+const tmpDir = path.resolve(os.tmpdir(), 'vscode-fileutils-test--duplicate-file');
 
 const fixtureFile1 = path.resolve(rootDir, 'test', 'fixtures', 'file-1.rb');
 const fixtureFile2 = path.resolve(rootDir, 'test', 'fixtures', 'file-2.rb');
@@ -87,8 +87,8 @@ describe('duplicateFile', () => {
 
                 return duplicateFile().then(() => {
                     const prompt = 'Duplicate As';
-                    const value = editorFile1;
-                    expect(window.showInputBox).to.have.been.calledWithExactly({ prompt, value });
+                    const value = sinon.match(new RegExp(`^${editorFile1}$`, 'i'));
+                    expect(window.showInputBox).to.have.been.calledWithMatch({ prompt, value });
                 });
 
             });
