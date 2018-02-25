@@ -72,6 +72,7 @@ export class FileController {
             .then((targetPath) => {
 
                 if (targetPath) {
+                    const isDir = targetPath.endsWith(path.sep);
                     targetPath = path.resolve(sourcePath, targetPath);
                     return new FileItem(sourcePath, targetPath);
                 }
